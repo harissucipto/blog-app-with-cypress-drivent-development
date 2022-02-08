@@ -3,8 +3,6 @@ import { addPage } from "./pages/AddPage";
 import { homePage } from "./pages/HomePage";
 import { postDetailPage } from "./pages/PostDetailPage";
 
-const HOME = "http://localhost:3000/";
-
 describe("Blog Flow", () => {
   let post = {};
   beforeEach(() => {
@@ -12,7 +10,7 @@ describe("Blog Flow", () => {
   });
 
   it("allows a user to create and delete a new blog post", () => {
-    cy.visit(HOME);
+    cy.visit("/");
 
     // Create blog post
     cy.findByRole("link", { name: /new post/i }).click();
@@ -26,10 +24,10 @@ describe("Blog Flow", () => {
 
   it("Custom Command: allows a user to delete a new blog post", () => {
     cy.createBlogPost(post);
-    cy.visit(HOME);
+    cy.visit("/");
     cy.findByRole("link", { name: post.title }).click();
     cy.findByText(/delete post>/i).click();
-    cy.visit(HOME);
+    cy.visit("/");
     cy.findByRole("link", { name: post.title }).should("not.exist");
   });
 

@@ -1,6 +1,6 @@
 class HomePage {
   navigateToHomePage() {
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
   }
   navigateToAddPage() {
     cy.findByRole("link", { name: /new post/i }).click();
