@@ -1,3 +1,4 @@
+require("dotenv").config();
 module.exports = {
-  reactStrictMode: true,
-}
+  env: { mongodb: process.env.MONGODB_URI },
+};
